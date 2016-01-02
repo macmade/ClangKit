@@ -51,7 +51,6 @@
 #pragma clang diagnostic fatal "-Waggregate-return"
 #pragma clang diagnostic fatal "-Wall"
 #pragma clang diagnostic fatal "-Wambiguous-member-template"
-#pragma clang diagnostic fatal "-Warc-abi"
 #pragma clang diagnostic fatal "-Warc-non-pod-memaccess"
 #pragma clang diagnostic fatal "-Warc-retain-cycles"
 #pragma clang diagnostic fatal "-Warc-unsafe-retained-assign"

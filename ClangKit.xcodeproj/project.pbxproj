@@ -321,7 +321,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = CK;
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "XS-Labs";
 			};
 			buildConfigurationList = 059872E715D74D09006FF8D2 /* Build configuration list for PBXProject "ClangKit" */;
@@ -431,7 +431,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ANALYZER_DEADCODE_DEADSTORES = YES;
 				CLANG_ANALYZER_GCD = YES;
 				CLANG_ANALYZER_MALLOC = "";
@@ -479,6 +478,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CLANG_WARN__EXIT_TIME_DESTRUCTORS = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -524,7 +524,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LLVM_LTO = NO;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = macosx;
 			};
@@ -534,7 +534,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ANALYZER_DEADCODE_DEADSTORES = YES;
 				CLANG_ANALYZER_GCD = YES;
 				CLANG_ANALYZER_MALLOC = "";
@@ -674,6 +673,7 @@
 					"-lclangTooling",
 					"-lclangToolingCore",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.xs-labs.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = framework;
@@ -727,6 +727,7 @@
 					"-lclangTooling",
 					"-lclangToolingCore",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.xs-labs.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = framework;

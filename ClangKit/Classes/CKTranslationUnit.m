@@ -125,6 +125,7 @@
     NSString    * tempFileName;
     NSString    * tempFile;
     char          buffer[ 40 ];
+    char        * s;
     
     uuid         = CFUUIDCreate( kCFAllocatorDefault );
     uuidString   = CFUUIDCreateString( kCFAllocatorDefault, uuid );
@@ -148,14 +149,34 @@
     CFRelease( uuid );
     CFRelease( uuidString );
     
-    if( mkstemp( ( char * )( tempFile.fileSystemRepresentation ) ) == -1 )
+    if( tempFile.fileSystemRepresentation )
     {
-        [ self release ];
+        s = strdup( tempFile.fileSystemRepresentation );
         
-        return nil;
+        if( s == NULL )
+        {
+            [ self release ];
+            
+            return nil;
+        }
+        
+        if( mkstemp( s ) == -1 )
+        {
+            free( s );
+            
+            [ self release ];
+            
+            return nil;
+        }
+        
+        free( s );
+        
+        return [ self initWithPath: tempFile text: text index: index args: args ];
     }
+       
+    [ self release ];
     
-    return [ self initWithPath: tempFile text: text index: index args: args ];
+    return nil;
 }
 
 - ( void )dealloc

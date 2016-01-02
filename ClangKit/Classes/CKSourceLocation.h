@@ -44,8 +44,8 @@
 {
 @protected
     
-    void       * _ptrData1;
-    void       * _ptrData2;
+    const void * _ptrData1;
+    const void * _ptrData2;
     unsigned int _intData;
     NSString   * _fileName;
 }
@@ -54,13 +54,13 @@
  * @property        ptrData1
  * @abstract        Internal pointer data 1
  */
-@property( atomic, readonly ) void * ptrData1;
+@property( atomic, readonly ) const void * ptrData1;
 
 /*!
  * @property        ptrData2
  * @abstract        Internal pointer data 1
  */
-@property( atomic, readonly ) void * ptrData2;
+@property( atomic, readonly ) const void * ptrData2;
 
 /*!
  * @property        intData
@@ -83,7 +83,7 @@
  * @return          The source location object
  * @discussion      The returned object is autoreleased.
  */
-+ ( id )sourceLocationWithPointerData1: ( void * )ptrData1 pointerData2: ( void * )ptrData2 intData: ( unsigned int )intData;
++ ( id )sourceLocationWithPointerData1: ( const void * )ptrData1 pointerData2: ( const void * )ptrData2 intData: ( unsigned int )intData;
 
 /*!
  * @method          initWithPointerData1:pointerData2:intData:
@@ -93,6 +93,6 @@
  * @param           intData     Integer data
  * @return          The source location object
  */
-- ( id )initWithPointerData1: ( void * )ptrData1 pointerData2: ( void * )ptrData2 intData: ( unsigned int )intData;
+- ( id )initWithPointerData1: ( const void * )ptrData1 pointerData2: ( const void * )ptrData2 intData: ( unsigned int )intData;
 
 @end

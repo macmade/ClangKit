@@ -38,12 +38,12 @@
 @synthesize intData  = _intData;
 @synthesize fileName = _fileName;
 
-+ ( id )sourceLocationWithPointerData1: ( void * )ptrData1 pointerData2: ( void * )ptrData2 intData: ( unsigned int )intData
++ ( id )sourceLocationWithPointerData1: ( const void * )ptrData1 pointerData2: ( const void * )ptrData2 intData: ( unsigned int )intData
 {
     return [ [ [ self alloc ] initWithPointerData1: ptrData1 pointerData2: ptrData2 intData: intData ] autorelease ];
 }
 
-- ( id )initWithPointerData1: ( void * )ptrData1 pointerData2: ( void * )ptrData2 intData: ( unsigned int )intData
+- ( id )initWithPointerData1: ( const void * )ptrData1 pointerData2: ( const void * )ptrData2 intData: ( unsigned int )intData
 {
     CXSourceLocation location;
     CXFile           file;

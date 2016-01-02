@@ -59,7 +59,7 @@
         _displayName  = [ [ NSString alloc ] initWithCString: clang_getCString( displayName) encoding: NSUTF8StringEncoding ];
         _kindSpelling = [ [ NSString alloc ] initWithCString: clang_getCString( kindSpelling) encoding: NSUTF8StringEncoding ];
         location      = clang_getCursorLocation( cursor );
-        _location     = [ [ CKSourceLocation alloc ] initWithPointerData1: ( void * )location.ptr_data[ 0 ] pointerData2: ( void * )location.ptr_data[ 1 ] intData: location.int_data ];
+        _location     = [ [ CKSourceLocation alloc ] initWithPointerData1: location.ptr_data[ 0 ] pointerData2: location.ptr_data[ 1 ] intData: location.int_data ];
         
         if( clang_isCursorDefinition( cursor ) )
         {
