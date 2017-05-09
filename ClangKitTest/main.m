@@ -36,17 +36,29 @@
  * @abstract        ClangKit test / demo project
  */
 
+static NSString * GetClangIncludePath( void );
+
 int main( void )
 {
     CKTranslationUnit * tu;
     CKDiagnostic      * d;
+    NSString          * inc;
+    NSMutableArray    * args;
     
     @autoreleasepool
     {
+        inc  = GetClangIncludePath();
+        args = [ NSMutableArray arrayWithObject: @"-Weverything" ];
+        
+        if( inc != nil )
+        {
+            [ args addObject: [ @"-I" stringByAppendingString: inc ] ];
+        }
+        
         /* First create a translation unit for Objective-C, using a string */
         tu = [ CKTranslationUnit    translationUnitWithText:    @"int main( void ) { return 0; }"
                                     language:                   CKLanguageObjC
-                                    args:                       [ NSArray arrayWithObject: @"-Weverything" ]
+                                    args:                       args
              ];
         
         /* Logs each diagnostic and fix-its */
@@ -88,3 +100,52 @@ int main( void )
     return 0;
 }
 
+static NSString * GetClangIncludePath( void )
+{
+    CFURLRef   url;
+    NSString * path;
+    NSString * sub;
+    OSStatus   res;
+    BOOL       isDir;
+    
+    res = LSFindApplicationForInfo
+    (
+        kLSUnknownCreator,
+        CFSTR( "com.apple.dt.Xcode" ),
+        NULL,
+        NULL,
+        &url
+    );
+    
+    if( res == noErr )
+    {
+        path = ( __bridge_transfer NSString * )CFURLCopyPath( url );
+        
+        CFRelease( url );
+        
+        path = [ path stringByAppendingPathComponent: @"Contents" ];
+        path = [ path stringByAppendingPathComponent: @"Developer" ];
+        path = [ path stringByAppendingPathComponent: @"Toolchains" ];
+        path = [ path stringByAppendingPathComponent: @"XcodeDefault.xctoolchain" ];
+        path = [ path stringByAppendingPathComponent: @"usr" ];
+        path = [ path stringByAppendingPathComponent: @"lib" ];
+        path = [ path stringByAppendingPathComponent: @"clang" ];
+        
+        if( [ [ NSFileManager defaultManager ] fileExistsAtPath: path isDirectory: &isDir ] == NO || isDir == NO )
+        {
+            return nil;
+        }
+        
+        for( sub in [ [ NSFileManager defaultManager ] contentsOfDirectoryAtPath: path error: NULL ] )
+        {
+            sub = [ [ path stringByAppendingPathComponent: sub ] stringByAppendingPathComponent: @"include" ];
+            
+            if( [ [ NSFileManager defaultManager ] fileExistsAtPath: sub isDirectory: &isDir ] && isDir )
+            {
+                return sub;
+            }
+        }
+    }
+    
+    return nil;
+}

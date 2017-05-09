@@ -43,6 +43,7 @@
 		05A73DBE15D95DA600AB75F4 /* CKSourceLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A73DBC15D95DA600AB75F4 /* CKSourceLocation.m */; };
 		05A73DC115D9645E00AB75F4 /* CKCursor+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 05A73DBF15D9645E00AB75F4 /* CKCursor+Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		05A73DC215D9645E00AB75F4 /* CKCursor+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A73DC015D9645E00AB75F4 /* CKCursor+Private.m */; };
+		05CFB7FB1EC25EB00020A075 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05CFB7FA1EC25EB00020A075 /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +112,7 @@
 		05A73DBC15D95DA600AB75F4 /* CKSourceLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKSourceLocation.m; sourceTree = "<group>"; };
 		05A73DBF15D9645E00AB75F4 /* CKCursor+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CKCursor+Private.h"; sourceTree = "<group>"; };
 		05A73DC015D9645E00AB75F4 /* CKCursor+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CKCursor+Private.m"; sourceTree = "<group>"; };
+		05CFB7FA1EC25EB00020A075 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05CFB7FB1EC25EB00020A075 /* Cocoa.framework in Frameworks */,
 				0518B9DF15D7589F00349932 /* ClangKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -186,6 +189,7 @@
 		059872F015D74D09006FF8D2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				05CFB7FA1EC25EB00020A075 /* Cocoa.framework */,
 				055BB2F01A83D23600E6AC23 /* libcurses.dylib */,
 				055BB2EE1A83D1D800E6AC23 /* libz.dylib */,
 				055BB2EC1A83BDEE00E6AC23 /* libc++abi.dylib */,
@@ -453,6 +457,7 @@
 				CLANG_ANALYZER_SECURITY_KEYCHAIN_API = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_STATIC_ANALYZER_MODE = deep;
 				CLANG_STATIC_ANALYZER_MODE_ON_ANALYZE_ACTION = deep;
 				CLANG_WARN_ASSIGN_ENUM = YES;
@@ -556,6 +561,7 @@
 				CLANG_ANALYZER_SECURITY_KEYCHAIN_API = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_STATIC_ANALYZER_MODE = deep;
 				CLANG_STATIC_ANALYZER_MODE_ON_ANALYZE_ACTION = deep;
 				CLANG_WARN_ASSIGN_ENUM = YES;
@@ -630,6 +636,7 @@
 		0598730415D74D09006FF8D2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -683,6 +690,7 @@
 		0598730515D74D09006FF8D2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
